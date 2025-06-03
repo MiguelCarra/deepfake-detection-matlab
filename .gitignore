@@ -1,0 +1,78 @@
+# MATLAB & Simulink auto-generated files and folders
+*.asv
+*.bak
+*.mex*
+*.pdb
+*.pdb.zip
+*.slxc
+*.p
+*.rsk
+*.autosave
+*.m~
+*.slx~
+*.mdl~
+*_ert_rtw/
+*_grt_rtw/
+*_raccel_rtw/
+*_slrt_rtw/
+*_stf_rtw/
+mdl_info.html
+slprj/
+sfprj/
+*.autosave.slx
+*.dmr
+*.slx.original
+*.sldd.original
+*.sltx.original
+
+# MATLAB generated folders
+_Simulink_Cache_Files_/
+_clang_tidy_checks_/
+codeinstrpt/
+covhtml/
+html/
+profile_summary_folder/
+pslink/
+rtw_proj.tmw
+slcov_output/
+sscprj/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Data files - By default, ignore all .mat files
+# This is a general rule. If you have specific .mat files to include
+# (like YOUR trained model), add an exception rule below.
+*.mat
+
+# Exception for your specific trained model if it's in the 'models' folder
+# and you want to version it (ensure it's not too large for GitHub).
+# Adjust the name if it's different.
+!models/AlexNetTrained5.mat
+# If you have other specific .mat files to include, add them similarly:
+# !path/to/your/specific_file.mat
+
+# MATLAB App Installer files (if any)
+*.mlappinstall
+
+# MATLAB Project files (if you create a MATLAB Project)
+*.prj
+*.mlproj
+
+# MATLAB Toolbox packaging files (if any)
+*.mltbx
+
+# Log files
+*.log
+
+# Temporary files
+*.tmp
+*.temp
+
+# Other common files to ignore
+.idea/
+.vscode/
+nbproject/
+*.swp
+*.swo
