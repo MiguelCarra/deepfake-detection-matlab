@@ -6,13 +6,11 @@
 
 Este proyecto implementa y evalúa sistemas de detección de DeepFakes utilizando técnicas de aprendizaje profundo (Deep Learning) con Redes Neuronales Convolucionales (CNNs) en el entorno MATLAB. Se exploran análisis intra-database e inter-database utilizando arquitecturas como AlexNet y una CNN personalizada.
 
-
 **Desarrollado por:**
 * [Miguel Carralero Lanchares](https://www.linkedin.com/in/miguel-carralero-lanchares/) <a href="https://www.linkedin.com/in/miguel-carralero-lanchares/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="16" style="vertical-align:middle; margin-left:4px"/></a>
 * [Íñigo Cameo de Dios](https://www.linkedin.com/in/%C3%AD%C3%B1igo-cameo-de-dios-23b388212/) <a href="https://www.linkedin.com/in/%C3%AD%C3%B1igo-cameo-de-dios-23b388212/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="16" style="vertical-align:middle; margin-left:4px"/></a>
 * [Francisco Orcha](https://www.linkedin.com/in/francisco-orcha-38a5831b3/) <a href="https://www.linkedin.com/in/francisco-orcha-38a5831b3/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="16" style="vertical-align:middle; margin-left:4px"/></a>
 * [Miguel Bueno](https://www.linkedin.com/in/miguel-bueno-mora-a63389263/) <a href="https://www.linkedin.com/in/miguel-bueno-mora-a63389263/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="16" style="vertical-align:middle; margin-left:4px"/></a>
-
 
 ## Descripción General del Proyecto
 
