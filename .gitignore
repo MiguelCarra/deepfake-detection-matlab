@@ -44,12 +44,12 @@ Thumbs.db
 # Data files - By default, ignore all .mat files
 # This is a general rule. If you have specific .mat files to include
 # (like YOUR trained model), add an exception rule below.
-*.mat
+#*.mat
 
 # Exception for your specific trained model if it's in the 'models' folder
 # and you want to version it (ensure it's not too large for GitHub).
 # Adjust the name if it's different.
-!models/AlexNetTrained5.mat
+#!models/AlexNetTrained5.mat
 # If you have other specific .mat files to include, add them similarly:
 # !path/to/your/specific_file.mat
 
