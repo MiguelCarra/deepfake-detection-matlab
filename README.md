@@ -24,7 +24,7 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
 
 ## Tecnologías Utilizadas
 
-*   **Lenguaje y Entorno:** MATLAB (R2022a o similar)
+*   **Lenguaje y Entorno:** MATLAB (R2024b o similar)
 *   **Toolboxes de MATLAB:**
     *   Deep Learning Toolbox (para AlexNet, capas de CNN, entrenamiento)
     *   Image Processing Toolbox (para `imcrop`, `imread`, etc.)
@@ -78,7 +78,7 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
 *   MATLAB (versión R2024b o posterior recomendada).
 *   Toolboxes de MATLAB:
     *   **Deep Learning Toolbox**
-    *   **Deep Learning Toolbox Model for AlexNet Network Support Package** (Para Task 1 y Task 2. Se puede instalar desde el Add-On Explorer de MATLAB).
+    *   **Deep Learning Toolbox Model for AlexNet Network Support Package** (Para Task 1 y Task 2. Se puede instalar desde el Add-Ons Explorer de MATLAB).
     *   Image Processing Toolbox
     *   Computer Vision Toolbox (o el toolbox que provea `vision.CascadeObjectDetector`)
 
