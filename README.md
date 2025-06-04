@@ -45,12 +45,12 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
 | | | +-- fake/
 | | | +-- real/
 | | +-- evaluation_cropped/     (Caras recortadas de UADFV para evaluación de Task 1)
-| | +-- fake/
-| | +-- real/
+| | | +-- fake/
+| | | +-- real/
 | +-- Task2/
 | | +-- cropped_faces/          (Caras recortadas de Celeb-DF para entrenamiento de Task 2)
-| | +-- fake/
-| | +-- real/
+| | | +-- fake/
+| | | +-- real/
 | | +-- evaluation/             (Dataset Celeb-DF original para evaluación de Task 2)
 | | | +-- fake/
 | | | +-- real/
@@ -59,8 +59,8 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
 | | | +-- fake/
 | | | +-- real/
 | | +-- evaluation_cropped/     (Caras recortadas para evaluación de Task 3)
-| | +-- fake/
-| | +-- real/
+| | | +-- fake/
+| | | +-- real/
 +-- code/
 | +-- encontrar_caras.m (Script de preprocesamiento para recortar caras)
 | +-- Task_1.m (Script para la Tarea 1: AlexNet en UADFV)
