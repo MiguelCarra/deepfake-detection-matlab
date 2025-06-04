@@ -77,7 +77,7 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
 ## Preparación del Entorno y Datos
 
 ### 1. Software Requerido
-*   MATLAB (versión R2020a o posterior recomendada).
+*   MATLAB (versión R2024b o posterior recomendada).
 *   Toolboxes de MATLAB:
     *   **Deep Learning Toolbox**
     *   **Deep Learning Toolbox Model for AlexNet Network Support Package** (Para Task 1 y Task 2. Se puede instalar desde el Add-On Explorer de MATLAB).
