@@ -4,7 +4,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![MATLAB Version](https://img.shields.io/badge/MATLAB-R2024b%2B-blue.svg)
 
-Este proyecto implementa y evalúa sistemas de detección de DeepFakes utilizando técnicas de aprendizaje profundo (Deep Learning) con Redes Neuronales Convolucionales (CNNs) en el entorno MATLAB. Se exploran análisis intra-database e inter-database utilizando arquitecturas como AlexNet y una CNN personalizada.
+Este proyecto implementa y evalúa sistemas de detección de DeepFakes utilizando técnicas de aprendizaje profundo (Deep Learning) con Redes Neuronales Convolucionales (CNNs) en el entorno MATLAB. Se exploran análisis intra-database e inter-database utilizando arquitecturas como AlexNet y una CNN.
 
 **Desarrollado por:**
 * [Miguel Carralero Lanchares](https://www.linkedin.com/in/miguel-carralero-lanchares/) <a href="https://www.linkedin.com/in/miguel-carralero-lanchares/" target="_blank"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="LinkedIn" width="16" style="vertical-align:middle; margin-left:4px"/></a>
