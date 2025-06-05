@@ -33,6 +33,7 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
 *   **Técnicas:** Transfer Learning, Data Augmentation (espejo).
 
 ## Estructura del Repositorio
+
 ```
 +-- .gitignore
 +-- LICENSE
@@ -74,7 +75,15 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
 
 ## Preparación del Entorno y Datos
 
-### 1. Software Requerido
+### 1. Obtener el Código del Repositorio
+Para obtener una copia local de este proyecto, clone el repositorio usando Git:
+
+```bash
+git clone https://github.com/MiguelCarra/deepfake-detection-matlab.git
+cd deepfake-detection-matlab
+```
+
+### 2. Software Requerido
 *   MATLAB (versión R2024b o posterior recomendada).
 *   Toolboxes de MATLAB:
     *   **Deep Learning Toolbox**
@@ -82,7 +91,7 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
     *   Image Processing Toolbox
     *   Computer Vision Toolbox (o el toolbox que provea `vision.CascadeObjectDetector`)
 
-### 2. Uso de los Datos y Modelos Incluidos (Recomendado para Ejecución Rápida)
+### 3. Uso de los Datos y Modelos Incluidos (Recomendado para Ejecución Rápida)
 
 Este repositorio **incluye las bases de datos con caras ya recortadas y los modelos pre-entrenados necesarios** para replicar los resultados del informe.
 
@@ -101,11 +110,11 @@ Este repositorio **incluye las bases de datos con caras ya recortadas y los mode
 
 Con estos datos y modelos, puede proceder directamente a la sección **"Ejecución de las Tareas"**.
 
-### 3. Creación y Preprocesamiento de Datasets Propios (Opcional)
+### 4. Creación y Preprocesamiento de Datasets Propios (Opcional)
 
 Si desea generar sus propias bases de datos a partir de los datasets originales UADFV y Celeb-DF, siga estos pasos:
 
-**3.1. Descarga de Datasets Originales:**
+**4.1. Descarga de Datasets Originales:**
 
 *   **Este repositorio no incluye los datasets originales UADFV y Celeb-DF debido a su tamaño.**
 *   **Dataset UADFV (para Task 1 y Task 3):**
@@ -118,7 +127,7 @@ Si desea generar sus propias bases de datos a partir de los datasets originales 
     *   Dentro de la carpeta `data/Task2/` (créela si no existe), cree una subcarpeta `celeb_df_original` (o el nombre que prefiera para los datos crudos).
     *   Dentro de `data/Task2/celeb_df_original/`, cree subcarpetas `fake/` y `real/` y coloque los vídeos o imágenes de Celeb-DF correspondientes. *Nota: `encontrar_caras.m` está configurado para procesar imágenes. Si descarga vídeos, deberá extraer los frames previamente.*
 
-**3.2. Preprocesamiento de Caras Recortadas con `encontrar_caras.m`:**
+**4.2. Preprocesamiento de Caras Recortadas con `encontrar_caras.m`:**
 
 El script `code/encontrar_caras.m` se encarga de detectar y recortar rostros. Deberá ejecutarlo configurándolo adecuadamente para cada conjunto de datos. Asegúrese de estar en la carpeta `code/` al ejecutarlo.
 
