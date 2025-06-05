@@ -65,8 +65,8 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
 | +-- Task_2.m (Script para la Tarea 2: Modelo de Tarea 1 en Celeb-DF)
 | +-- Task_3.m (Script para la Tarea 3: CNN personalizada)
 +-- models/
-| +-- AlexNet_task2.mat (Modelo entrenado en Task 1 y usado en Task 2. Renombrado desde AlexNetTrained5.mat)
-| +-- (Posiblemente otros modelos como el de Task 3 si se guarda)
+| +-- AlexNet_task2.mat (Modelo entrenado en Task 1 y usado en Task 2)
+| +-- AlexNet_task3.mat (Modelo entrenado en la Task3)
 +-- docs/
 | +-- DeepFakes_Detection_Lab_Report.pdf (Informe detallado del proyecto)
 +-- ...
@@ -82,80 +82,100 @@ El proyecto incluye un script de preprocesamiento (`encontrar_caras.m`) para det
     *   Image Processing Toolbox
     *   Computer Vision Toolbox (o el toolbox que provea `vision.CascadeObjectDetector`)
 
-### 2. Configuración de los Datasets
+### 2. Uso de los Datos y Modelos Incluidos (Recomendado para Ejecución Rápida)
 
-**Este repositorio no incluye los datasets UADFV y Celeb-DF debido a su tamaño.** Siga estos pasos para configurarlos:
+Este repositorio **incluye las bases de datos con caras ya recortadas y los modelos pre-entrenados necesarios** para replicar los resultados del informe.
 
-1.  **Dataset UADFV (para Task 1):**
+*   **Datos Preprocesados:**
+    *   Las imágenes con rostros recortados para **Task 1** se encuentran en:
+        *   `data/Task1/development_cropped/` (entrenamiento/desarrollo UADFV, sin data augmentation)
+        *   `data/Task1/evaluation_cropped/` (evaluación UADFV)
+    *   Las imágenes con rostros recortados para entrenamiento de **Task 3** (UADFV con data augmentation de espejo) se encuentran en:
+        *   `data/Task3/development_cropped/`
+    *   Las imágenes con rostros recortados para evaluación de **Task 2 y Task 3** (provenientes de Celeb-DF) se encuentran en:
+        *   `data/Task2/cropped_faces/`
+
+*   **Modelo Pre-entrenado para Task 2:**
+    *   El modelo entrenado por `Task_1.m` y necesario para `Task_2.m` está disponible en `models/AlexNet_task2.mat`.
+    *   Si ejecuta `Task_1.m`, este generará un nuevo modelo. Para usarlo en `Task_2.m`, deberá guardarlo/renombrarlo como `AlexNet_task2.mat` en la carpeta `models/`. Si no desea re-entrenar Task 1, puede usar directamente el modelo provisto.
+
+Con estos datos y modelos, puede proceder directamente a la sección **"Ejecución de las Tareas"**.
+
+### 3. Creación y Preprocesamiento de Datasets Propios (Opcional)
+
+Si desea generar sus propias bases de datos a partir de los datasets originales UADFV y Celeb-DF, siga estos pasos:
+
+**3.1. Descarga de Datasets Originales:**
+
+*   **Este repositorio no incluye los datasets originales UADFV y Celeb-DF debido a su tamaño.**
+*   **Dataset UADFV (para Task 1 y Task 3):**
     *   Descargue el dataset UADFV.
-    *   Dentro de la carpeta `data/Task1/` (créela si no existe), cree las subcarpetas `development` y `evaluation`.
-    *   Dentro de `data/Task1/development/`, cree subcarpetas `fake/` y `real/` y coloque las imágenes de entrenamiento/desarrollo UADFV correspondientes.
-    *   Dentro de `data/Task1/evaluation/`, cree subcarpetas `fake/` y `real/` y coloque las imágenes de evaluación UADFV correspondientes.
-
-2.  **Dataset Celeb-DF (para Task 2 y Task 3):**
+    *   Dentro de la carpeta `data/Task1/` (créela si no existe en la raíz del proyecto), cree las subcarpetas `development_original` y `evaluation_original`.
+    *   Dentro de `data/Task1/development_original/`, cree subcarpetas `fake/` y `real/` y coloque las imágenes de entrenamiento/desarrollo UADFV correspondientes.
+    *   Dentro de `data/Task1/evaluation_original/`, cree subcarpetas `fake/` y `real/` y coloque las imágenes de evaluación UADFV correspondientes.
+*   **Dataset Celeb-DF (para Task 2 y Task 3):**
     *   Descargue el dataset Celeb-DF.
     *   Dentro de la carpeta `data/Task2/` (créela si no existe), cree una subcarpeta `celeb_df_original` (o el nombre que prefiera para los datos crudos).
-    *   Dentro de `data/Task2/celeb_df_original/`, cree subcarpetas `fake/` y `real/` y coloque las imágenes de evaluación Celeb-DF correspondientes.
+    *   Dentro de `data/Task2/celeb_df_original/`, cree subcarpetas `fake/` y `real/` y coloque los vídeos o imágenes de Celeb-DF correspondientes. *Nota: `encontrar_caras.m` está configurado para procesar imágenes. Si descarga vídeos, deberá extraer los frames previamente.*
 
-### 3. Preprocesamiento de Caras Recortadas
+**3.2. Preprocesamiento de Caras Recortadas con `encontrar_caras.m`:**
 
-Los scripts de las tareas utilizan imágenes con rostros recortados. El script `code/encontrar_caras.m` se encarga de este preprocesamiento.
+El script `code/encontrar_caras.m` se encarga de detectar y recortar rostros. Deberá ejecutarlo configurándolo adecuadamente para cada conjunto de datos. Asegúrese de estar en la carpeta `code/` al ejecutarlo.
 
-**Ejecute `encontrar_caras.m` tres veces, configurándolo adecuadamente para cada conjunto de datos:**
-
-*   **Para Task 1 (Entrenamiento/Desarrollo UADFV):**
+*   **Para Task 1 (Entrenamiento/Desarrollo UADFV - SIN Data Augmentation):**
     *   Modifique `encontrar_caras.m`:
-        *   `evalFolder = fullfile('..', 'data', 'Task1', 'development');`
+        *   `evalFolder = fullfile('..', 'data', 'Task1', 'development_original');`
         *   `outputFolder = fullfile('..', 'data', 'Task1', 'development_cropped');`
-    *   Si desea aplicar data augmentation (espejo) para Task 3, descomente las líneas relevantes en `encontrar_caras.m` ANTES de ejecutar para este conjunto.
-    *   Ejecute el script desde la carpeta `code/`.
+    *   Asegúrese de que las líneas de data augmentation (espejo) estén comentadas.
+    *   Ejecute el script. Las caras recortadas se guardarán en `data/Task1/development_cropped/`.
 
 *   **Para Task 1 (Evaluación UADFV):**
     *   Modifique `encontrar_caras.m`:
-        *   `evalFolder = fullfile('..', 'data', 'Task1', 'evaluation');`
+        *   `evalFolder = fullfile('..', 'data', 'Task1', 'evaluation_original');`
         *   `outputFolder = fullfile('..', 'data', 'Task1', 'evaluation_cropped');`
     *   Asegúrese de que las líneas de data augmentation (espejo) estén comentadas.
-    *   Ejecute el script desde la carpeta `code/`.
+    *   Ejecute el script. Las caras recortadas se guardarán en `data/Task1/evaluation_cropped/`.
+
+*   **Para Task 3 (Entrenamiento/Desarrollo UADFV - CON Data Augmentation):**
+    *   Modifique `encontrar_caras.m`:
+        *   `evalFolder = fullfile('..', 'data', 'Task1', 'development_original');` (usa el mismo origen que Task 1 dev)
+        *   `outputFolder = fullfile('..', 'data', 'Task3', 'development_cropped');` (guarda en la carpeta específica de Task 3)
+    *   Asegúrese de descomentar las líneas relevantes para aplicar data augmentation (espejo).
+    *   Ejecute el script. Las caras recortadas y aumentadas se guardarán en `data/Task3/development_cropped/`.
 
 *   **Para Task 2 y Task 3 (Evaluación Celeb-DF):**
     *   Modifique `encontrar_caras.m`:
         *   `evalFolder = fullfile('..', 'data', 'Task2', 'celeb_df_original');` (o la ruta donde guardó Celeb-DF)
         *   `outputFolder = fullfile('..', 'data', 'Task2', 'cropped_faces');`
     *   Asegúrese de que las líneas de data augmentation (espejo) estén comentadas.
-    *   Ejecute el script desde la carpeta `code/`.
+    *   Ejecute el script. Las caras recortadas se guardarán en `data/Task2/cropped_faces/`.
 
-Tras estos pasos, tendrá las siguientes carpetas con datos procesados:
-*   `data/Task1/development_cropped/`
-*   `data/Task1/evaluation_cropped/`
-*   `data/Task2/cropped_faces/`
-
-*Nota: `Task_3.m` utiliza `../data/Task1/development_cropped` para entrenamiento y `../data/Task2/cropped_faces` para evaluación, según las rutas en su código.*
-
-### 4. Modelo Pre-entrenado
-
-*   Para `Task_2.m`, se necesita el modelo entrenado en `Task_1.m`. El script `Task_2.m` espera encontrarlo en `../models/AlexNet_task2.mat`.
-*   Asegúrese de que después de ejecutar `Task_1.m`, el modelo guardado (`trainedNet`) se copie o se guarde como `AlexNet_task2.mat` dentro de la carpeta `models/` (créela en la raíz del repositorio si no existe).
+Tras estos pasos, tendrá las siguientes carpetas con sus datos procesados listos para ser usados por los scripts de las tareas:
+*   `data/Task1/development_cropped/`   (UADFV desarrollo, sin augmentation)
+*   `data/Task1/evaluation_cropped/`    (UADFV evaluación)
+*   `data/Task3/development_cropped/`   (UADFV desarrollo, con augmentation)
+*   `data/Task2/cropped_faces/`         (Celeb-DF evaluación)
 
 ## Ejecución de las Tareas
 
 Todos los scripts deben ejecutarse desde MATLAB, teniendo la carpeta `code/` como directorio actual.
 
 1.  **Ejecutar Tarea 1 (`Task_1.m`):**
-    *   Este script utiliza los datos de `data/Task1/development_cropped/` para entrenar y `data/Task1/evaluation_cropped/` para evaluar.
+    *   Utiliza los datos de `data/Task1/development_cropped/` para entrenar y `data/Task1/evaluation_cropped/` para evaluar.
     *   Entrenará la AlexNet modificada.
-    *   Guardará el modelo entrenado (ej. `trainedNet`). **Recuerde mover/renombrar este modelo a `models/AlexNet_task2.mat` para la Tarea 2.**
+    *   Guardará el modelo entrenado (ej. `trainedNet`). **Si desea usar este nuevo modelo para la Tarea 2, recuerde mover/renombrar este modelo a `../models/AlexNet_task2.mat`.**
     *   Mostrará curvas ROC y métricas de rendimiento.
 
 2.  **Ejecutar Tarea 2 (`Task_2.m`):**
-    *   Este script carga el modelo `models/AlexNet_task2.mat`.
+    *   Carga el modelo desde `../models/AlexNet_task2.mat` (ya sea el provisto o el que usted generó y guardó desde Task 1).
     *   Utiliza los datos de `data/Task2/cropped_faces/` para la evaluación inter-database.
     *   Mostrará la curva ROC y métricas de rendimiento.
 
 3.  **Ejecutar Tarea 3 (`Task_3.m`):**
-    *   Este script utiliza los datos de `data/Task1/development_cropped/` (posiblemente con data augmentation si se activó en `encontrar_caras.m`) para entrenar la CNN personalizada.
+    *   Utiliza los datos de `data/Task3/development_cropped/` (UADFV con data augmentation) para entrenar la CNN personalizada.
     *   Utiliza los datos de `data/Task2/cropped_faces/` para la evaluación.
-    *   Mostrará curvas ROC y métricas de rendimiento.
-
+    *   Mostrará curvas ROC y métricas de rendimiento. El modelo entrenado puede ser guardado si modifica el script.
+    *   
 ## Resultados y Discusión
 
 Los resultados detallados, incluyendo métricas de exactitud, AUC, y las curvas ROC para cada tarea, se encuentran en el **[Informe Completo del Laboratorio](docs/DeepFakes_Detection_Lab_Report.pdf)**.
